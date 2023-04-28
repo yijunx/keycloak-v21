@@ -5,9 +5,6 @@ ENV KC_METRICS_ENABLED=true
 ENV KC_FEATURES=token-exchange
 ENV KC_DB=postgres
 
-# Install custom providers
-#RUN curl -sL https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar -o /opt/keycloak/providers/keycloak-metrics-spi-2.5.3.jar
-#COPY ./keycloak/custom_providers/keycloak-metrics-spi-2.5.3.jar /opt/keycloak/providers/keycloak-metrics-spi-2.5.3.jar
 RUN /opt/keycloak/bin/kc.sh build --features="preview"
 
 # multistage build
@@ -31,4 +28,4 @@ ENV KC_HOSTNAME_STRICT_HTTPS=false
 ENV KC_HTTP_ENABLED=true
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start  --features=token-exchange,admin-fine-grained-authz"]  
-# -Dkeycloak.profile.feature.token_exchange=enabled -Dkeycloak.profile.feature.admin_fine_grained_authz=enabled
+
