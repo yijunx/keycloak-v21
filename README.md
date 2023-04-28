@@ -41,6 +41,7 @@ bitnami keycloak export (keycloak 16.1.1). Here we focus on bitnami, because it 
     export KEYCLOAK_EXTRA_ARGS="-Dkeycloak.migration.action=export -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/tmp/exports/default -Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES -Dkeycloak.migration.realmName=default"
 
     # finally lets trigger it
+    # the below entrypoint.sh and run.sh, actually you can find it at dockerhub, if you take a look at the image layers.
     /opt/bitnami/scripts/keycloak/entrypoint.sh /opt/bitnami/scripts/keycloak/run.sh
     # after sometime, there will be a few files in your chosen folder for export.
 
@@ -49,7 +50,7 @@ bitnami keycloak export (keycloak 16.1.1). Here we focus on bitnami, because it 
 
     ```bash
     # here we copy from a folder
-    kubectl cp keycloak-0:tmp/exports/default -n your-namespace /Users/yourname//migrate-keycloak
+    kubectl cp keycloak-0:tmp/exports/default -n your-namespace /Users/yourname/migrate-keycloak
     ```
 
 
@@ -78,8 +79,6 @@ bitnami keycloak export (keycloak 16.1.1). Here we focus on bitnami, because it 
     IGNORE_EXISTING - Ignore importing if a realm of this name already exists.
 
     OVERWRITE_EXISTING - Remove existing realm and import it again with new data from the JSON file. If you want to fully migrate one environment to another and ensure that the new environment will contain the same data as the old one, you can specify this.
-
-    now lets get the users into the new realm
 
 
 ## IMPORT THE USERS TO THE KEYCLOAK 21.0.2
