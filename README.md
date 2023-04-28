@@ -19,7 +19,7 @@ bitnami keycloak export (keycloak 16.1.1). Here we focus on bitnami, because it 
             - /dev/null
           env:
           - name: blahblah
-          - value: blahblah
+            value: blahblah
 
     ```
 
