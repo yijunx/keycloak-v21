@@ -39,10 +39,11 @@ bitnami keycloak export (keycloak 16.1.1). Here we focus on bitnami, because it 
     # for this part you can refer to the part below (A short list of extra args)
     # here I recommand using DIFFERENT_FILES for usersExportStrategy, because the realm is likely to be created by some other program, and we just need to import the users
     export KEYCLOAK_EXTRA_ARGS="-Dkeycloak.migration.action=export -Dkeycloak.migration.provider=dir -Dkeycloak.migration.dir=/tmp/exports/default -Dkeycloak.migration.usersExportStrategy=DIFFERENT_FILES -Dkeycloak.migration.realmName=default"
-    # then there will be a few files in the folder for export
 
     # finally lets trigger it
     /opt/bitnami/scripts/keycloak/entrypoint.sh /opt/bitnami/scripts/keycloak/run.sh
+    # after sometime, there will be a few files in your chosen folder for export.
+
 
 - on your laptop, copy the files down
 
