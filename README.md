@@ -92,6 +92,6 @@ bitnami keycloak export (keycloak 16.1.1). Here we focus on bitnami, because it 
     - then select the json for users
     - and its done!!
 - full import (realm and users, and keeping the user id)
-    - copy the files into the container by volume mapping
-    - docker exec or kube exec there untill we can see use the `kc.sh`
-    - run `kc.sh import --dir xxxxx`
+    - make the files go into the container by volume mapping to a folder like `./imports:/tmp/thistimeimports`
+    - docker exec or kube exec there untill we can see use the `kc.sh` at `bin`
+    - run `./bin/kc.sh import --dir /tmp/thistimeimports`
