@@ -83,10 +83,15 @@ bitnami keycloak export (keycloak 16.1.1). Here we focus on bitnami, because it 
 
 ## IMPORT THE USERS TO THE KEYCLOAK 21.0.2
 
-- go to the ui
-- go the realm of interest
-- click the Realm settings of the lower half of the navigation panel
-- click action at the top right corner
-- in the drop down select partial import
-- then select the json for users
-- and its done!!
+- partial import (which we cannot keep the user id at this version of keycloak, it is said that very old keylcoak could keep the user id..be real careful using this one)
+    - go to the ui
+    - go the realm of interest
+    - click the Realm settings of the lower half of the navigation panel
+    - click action at the top right corner
+    - in the drop down select partial import
+    - then select the json for users
+    - and its done!!
+- full import (realm and users, and keeping the user id)
+    - copy the files into the container by volume mapping
+    - docker exec or kube exec there untill we can see use the `kc.sh`
+    - run `kc.sh import --dir xxxxx`
